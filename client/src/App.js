@@ -1,10 +1,15 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import Title from "./componennpmts/Title";
+import Card from "./components/Card";
+import wrapper from "./components/Wrapper";
+import DeleteBtn from "./components/DeleteBtn"
+import Homepage/ViewEvent from "./components/homepgae/ViewEvents";
+import commentpage from "./Components/CommentPage";
 
-function App() {
   return (
-    <div className="App">
+    <div className="">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
