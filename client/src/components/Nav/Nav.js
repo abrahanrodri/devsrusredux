@@ -130,3 +130,7 @@ export default function SimpleTabs() {
     </div>
   );
 }
+
+
+export default Navbar;
+
