@@ -1,28 +1,56 @@
-
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import Button from '@material-ui/core/Button';
+import { withStyles } from '@material-ui/core/styles';
+import { Grid, Paper, TextField } from '@material-ui/core';
 
-const useStyles = makeStyles(theme => ({
-  button: {
-    margin: theme.spacing(1),
+const styles = theme => ({
+  paper: {
+    margin: "5%",
+    textAlign: 'center',
   },
-  input: {
-    display: 'none',
-  },
-}));
+  textField: {
+    color: "red"
+  }
+});
 
-export default function ContainedButtons() {
-  const createEvent = useStyles();
+class CreateEvent extends React.Component {
+  state = {
+    someItem1: ""
+  }
 
-  return (
-    <div>
-      <Button variant="contained" className={classes.commets}>
-        Default
-      </Button>
-      <createEvent variant="contained" href="#contained-buttons" className={classes.createEvent}>
-      Link
-    </createEvent>
-    </div>
+  handleChange = (event) => {
+    console.log(event.target.name, event.target.value)
+    const { name, value } = event.target;
+    this.setState({ [name]: value })
+  }
+
+  render() {
+    const { classes } = this.props;
+    return (
+      <div className={classes.root}>
+        <Paper className={classes.paper}>
+          <Grid container>
+            <Grid item xs={12}>
+              <h1>Create Event</h1>
+
+              <TextField
+                fullWidth
+                id="standard-name"
+                label="Name Label"
+                name="someItem1"
+                className={classes.textField}
+                value={this.state.someItem1}
+                onChange={this.handleChange}
+                margin="normal"
+              />
+
+
+
+            </Grid>
+          </Grid>
+        </Paper>
+      </div>
     );
+  }
 }
+
+export default withStyles(styles)(CreateEvent);
