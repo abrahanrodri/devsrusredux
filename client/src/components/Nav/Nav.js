@@ -132,5 +132,4 @@ export default function SimpleTabs() {
 }
 
 
-export default Navbar;
 
