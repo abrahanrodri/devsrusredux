@@ -1,7 +1,7 @@
 import React from "react";
 import { withStyles } from "@material-ui/core/styles";
-import { Grid, Paper, TextField } from "@material-ui/core";
-// import "./css/createEvent.css";
+import { Grid, Paper } from "@material-ui/core";
+import './EventHolder.css';
 import Button from "@material-ui/core/Button";
 
 const styles = theme => ({
@@ -40,7 +40,11 @@ class EventHolder extends React.Component {
             <Grid item sm={12}></Grid>
           </Grid>
           <Button color="primary" className={classes.button}>
-            Create Event
+            Delete Event
+          </Button>
+
+          <Button color="primary" className={classes.button}>
+            Edit Event
           </Button>
         </Paper>
       </div>
