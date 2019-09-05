@@ -9,7 +9,8 @@ const styles = theme => ({
     textAlign: "center",
   height: "400px",
   width: "500px",
-  backgroundColor: 'rgba(0, 0, 0, 0.5)'
+  backgroundColor: 'rgba(194, 186, 186, 0.65)',
+  
   },
   textField: {
     color: "white"
@@ -34,7 +35,7 @@ class CreateEvent extends React.Component {
       <div className={classes.root}>
         <Paper className={classes.paper}>
           <Grid container>
-            <Grid item lg={12} md={6}>
+            <Grid item lg={12} md={6} color='white'>
               <h1>Create Event</h1>
               <TextField
                 id="outlined-name"
