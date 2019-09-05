@@ -3,6 +3,7 @@ import { withStyles } from "@material-ui/core/styles";
 import { Grid, Paper, TextField } from "@material-ui/core";
 import "./css/createEvent.css";
 import Button from "@material-ui/core/Button"
+import EventHolder from "../components/EventHolder/EventHolder"
 
 const styles = theme => ({
   paper: {
@@ -73,8 +74,13 @@ class CreateEvent extends React.Component {
                 Create Event
               </Button>
         </Paper>
+        <EventHolder>
+
+        </EventHolder>
       </div>
     );
+
+
   }
 }
 
