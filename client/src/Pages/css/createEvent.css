@@ -6,7 +6,7 @@ h1{
     font-family: 'Courier New', Courier, monospace;
 }
 .MuiInputBase-root {
-    /* color: rgba(0, 0, 0, 0.87); */
+    /* color: rgba(168, 166, 166, 0.87); */
     color: black !important;
     cursor: text;
     display: inline-flex;

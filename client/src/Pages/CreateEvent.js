@@ -5,11 +5,11 @@ import "./css/createEvent.css";
 
 const styles = theme => ({
   paper: {
-    margin: "5%",
-    textAlign: "center",
+  margin: "5%",
+  textAlign: "center",
   height: "400px",
   width: "500px",
-  backgroundColor: 'rgba(194, 186, 186, 0.65)',
+  backgroundColor: 'rgba(168, 166, 166, 0.65)',
   
   },
   textField: {
