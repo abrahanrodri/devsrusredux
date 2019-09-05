@@ -7,10 +7,12 @@ const styles = theme => ({
   paper: {
     margin: "5%",
     textAlign: "center",
-    height: "700px"
+  height: "400px",
+  width: "500px",
+  backgroundColor: 'rgba(0, 0, 0, 0.5)'
   },
   textField: {
-    color: "black"
+    color: "white"
     // width: "100%"
   }
 });
@@ -32,9 +34,8 @@ class CreateEvent extends React.Component {
       <div className={classes.root}>
         <Paper className={classes.paper}>
           <Grid container>
-            <Grid item xs={12} sm={6}>
+            <Grid item lg={12} md={6}>
               <h1>Create Event</h1>
-
               <TextField
                 id="outlined-name"
                 label="Name"
@@ -44,9 +45,29 @@ class CreateEvent extends React.Component {
                 margin="normal"
                 variant="outlined"
               />
+               <TextField
+                id="outlined-location"
+                label="Location"
+                multiline
+                className={classes.textField}
+                margin="normal"
+                variant="outlined"
+              />
+              
             </Grid>
 
-            <Grid field sm={12}>
+            {/* <Grid location sm= {6}>
+              <TextField
+                id="outlined-location"
+                label="Location"
+                multiline
+                className={classes.textField}
+                margin="normal"
+                variant="outlined"
+              />
+            </Grid> */}
+
+            <Grid item sm={12}>
               <TextField
                 id="outlined-multiline-static"
                 label="Event Details"
