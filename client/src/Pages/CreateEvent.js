@@ -41,8 +41,7 @@ class CreateEvent extends React.Component {
                 id="outlined-name"
                 label="Name"
                 className={classes.textField}
-                // value={values.name}
-                // onChange={handleChange("name")}
+
                 margin="normal"
                 variant="outlined"
               />
@@ -56,17 +55,6 @@ class CreateEvent extends React.Component {
               />
               
             </Grid>
-
-            {/* <Grid location sm= {6}>
-              <TextField
-                id="outlined-location"
-                label="Location"
-                multiline
-                className={classes.textField}
-                margin="normal"
-                variant="outlined"
-              />
-            </Grid> */}
 
             <Grid item sm={12}>
               <TextField
