@@ -106,7 +106,7 @@ class NavTabs extends React.Component {
       <div className={classes.root}>
         <AppBar position="static">
           <Tabs value={this.state.value} onChange={this.handleChange} aria-label="simple tabs example">
-            <Tab label="Create Event!" component={Link} to="/create"/>
+            <Tab label="Create Event" component={Link} to="/create"/>
             <Tab label="Comments" component={Link} to="/comments"/>
             <Tab label="Home Page" component={Link} to="/home"/>
           </Tabs>
