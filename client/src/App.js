@@ -5,6 +5,7 @@ import Wrapper from "./components/Wrapper";
 import HomePage from './Pages/HomePage';
 import NoMatch from './Pages/NoMatch';
 import CreateEvent from './Pages/CreateEvent';
+import Comments from './Pages/Comments';
 import withFirebaseAuth from 'react-with-firebase-auth'
 import * as firebase from 'firebase/app';
 import 'firebase/auth';
@@ -31,6 +32,7 @@ class App extends Component {
                 <Route exact path="/" component={HomePage} />
                 <Route exact path="/home" component={HomePage} />
                 <Route exact path="/create" component={CreateEvent} />
+                <Route exact path="/comments"component={Comments} />
                 <Route component={NoMatch} />
               </Switch>
 
