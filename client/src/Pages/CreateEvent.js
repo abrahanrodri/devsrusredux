@@ -6,15 +6,18 @@ const styles = theme => ({
   paper: {
     margin: "5%",
     textAlign: 'center',
+    height: '300px',
   },
   textField: {
-    color: "red"
+    margin: '5%',
+    color: "black",
   }
+
 });
 
 class CreateEvent extends React.Component {
   state = {
-    someItem1: ""
+    Item: ""
   }
 
   handleChange = (event) => {
@@ -35,10 +38,10 @@ class CreateEvent extends React.Component {
               <TextField
                 fullWidth
                 id="standard-name"
-                label="Name Label"
-                name="someItem1"
+                label="Event"
+                name="Item"
                 className={classes.textField}
-                value={this.state.someItem1}
+                value={this.state.Item}
                 onChange={this.handleChange}
                 margin="normal"
               />
