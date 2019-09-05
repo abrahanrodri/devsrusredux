@@ -14,7 +14,6 @@ const styles = theme => ({
   },
   textField: {
     color: "white"
-    // width: "100%"
   }
 });
 
