@@ -32,7 +32,7 @@ class CreateEvent extends React.Component {
       <div className={classes.root}>
         <Paper className={classes.paper}>
           <Grid container>
-            <Grid item xs={12}>
+            <Grid item xs={12} sm = {6}>
               <h1>Create Event</h1>
 
               <TextField
