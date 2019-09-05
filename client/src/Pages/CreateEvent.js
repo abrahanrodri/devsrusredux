@@ -2,6 +2,7 @@ import React from "react";
 import { withStyles } from "@material-ui/core/styles";
 import { Grid, Paper, TextField } from "@material-ui/core";
 import "./css/createEvent.css";
+import Button from "@material-ui/core/Button"
 
 const styles = theme => ({
   paper: {
@@ -80,6 +81,9 @@ class CreateEvent extends React.Component {
               />
             </Grid>
           </Grid>
+          <Button color ='primary' className={classes.button}>
+                Create Event
+              </Button>
         </Paper>
       </div>
     );
