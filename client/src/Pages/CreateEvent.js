@@ -35,51 +35,6 @@ class CreateEvent extends React.Component {
             <Grid item xs={12} sm={6}>
               <h1>Create Event</h1>
 
-              {/* <TextField
-                fullWidth
-                id="standard-name"
-                label="Event"
-                name="Item"
-                className={classes.textField}
-                value={this.state.Item}
-                onChange={this.handleChange}
-                margin="normal"
-              /> */}
-
-              {/* <TextField
-                id="filled-multiline-static"
-                label="Event Name"
-                multiline
-                rows="6"
-                defaultValue=""
-                className={classes.textField}
-                margin="normal"
-                variant="filled"
-              /> */}
-
-              {/* <TextField
-                item xs = {6}
-                id="outlined-multiline-static"
-                label="Event Name"
-                multiline
-                rows="4"
-                defaultValue="Default Value"
-                className={classes.textField}
-                margin="normal"
-                variant="outlined"
-              /> */}
-
-              {/* <TextField
-                id="outlined-multiline-static"
-                label="Event Details"
-                multiline
-                rows="6"
-                defaultValue=""
-                className={classes.textField}
-                margin="normal"
-                variant="outlined"
-              /> */}
-
               <TextField
                 id="outlined-name"
                 label="Name"
