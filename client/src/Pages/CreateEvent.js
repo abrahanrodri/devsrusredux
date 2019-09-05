@@ -1,7 +1,7 @@
 import React from "react";
 import { withStyles } from "@material-ui/core/styles";
 import { Grid, Paper, TextField } from "@material-ui/core";
-import './css/CreateEvent.css'
+import './css/createEvent.css'
 import Button from "@material-ui/core/Button"
 import EventHolder from "../components/EventHolder/EventHolder"
 
