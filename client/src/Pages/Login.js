@@ -13,7 +13,6 @@ class Login extends React.Component {
     }
 
   // componentWillReceiveProps(nextProps) {
-      
   //   if(nextProps.user.displayName !== this.props.User.displayName){
   //       console.log(nextProps.user)
   //       this.props.handleLogin({
