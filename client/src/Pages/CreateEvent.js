@@ -73,8 +73,11 @@ class CreateEvent extends React.Component {
             className={classes.button}
             disabled={!this.props.User && true}
           >
+
             Create Event
+            
           </Button>
+          
         </Paper>
         <EventHolder></EventHolder>
       </div>

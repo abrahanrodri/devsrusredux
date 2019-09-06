@@ -12,17 +12,16 @@ class Login extends React.Component {
         LoggedInUser: false
     }
 
-  componentWillReceiveProps(nextProps) {
-      
-    if(nextProps.user.displayName !== this.props.User.displayName){
-        console.log(nextProps.user)
-        this.props.handleLogin({
-            email: nextProps.user.email,
-            displayName: nextProps.user.displayName,
-            uid: nextProps.user.uid
-        })
-    }
-  }
+  // componentWillReceiveProps(nextProps) {
+  //   if(nextProps.user.displayName !== this.props.User.displayName){
+  //       console.log(nextProps.user)
+  //       this.props.handleLogin({
+  //           email: nextProps.user.email,
+  //           displayName: nextProps.user.displayName,
+  //           uid: nextProps.user.uid
+  //       })
+  //   }
+  // }
   render() {
     const { 
       user, 
