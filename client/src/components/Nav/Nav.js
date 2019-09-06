@@ -109,6 +109,7 @@ class NavTabs extends React.Component {
             <Tab label="Home" component={Link} to="/home"/>
             <Tab label="Create Event" component={Link} to="/create"/>
             <Tab label="Comments" component={Link} to="/comments"/>
+            <Tab label="Login" component={Link} to="/login"/>
           </Tabs>
         </AppBar>
       </div>
