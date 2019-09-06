@@ -5,6 +5,7 @@ import "./css/CreateEvent.css";
 import Button from "@material-ui/core/Button";
 import EventHolder from "../components/EventHolder/EventHolder";
 
+
 const styles = theme => ({
   paper: {
     margin: "5%",
