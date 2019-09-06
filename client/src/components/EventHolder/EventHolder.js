@@ -8,7 +8,7 @@ const styles = theme => ({
   paper: {
     margin: "5%",
     textAlign: "center",
-    height: "400px",
+    height: "500px",
     width: "500px",
     backgroundColor: "rgba(168, 166, 166, 0.65)"
   },
@@ -35,7 +35,7 @@ class EventHolder extends React.Component {
         <Paper className={classes.paper}>
           <Grid container>
             <Grid item lg={12} md={6} color="white">
-              <h1>Current Events</h1>
+              <h1>Your Events</h1>
             </Grid>
             <Grid item sm={12}></Grid>
           </Grid>
