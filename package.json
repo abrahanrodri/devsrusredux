@@ -3,8 +3,6 @@
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
-<<<<<<< HEAD
-=======
   "scripts": {
     "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
     "start:prod": "node server.js",
@@ -15,7 +13,6 @@
     "build": "cd client && npm run build",
     "heroku-postbuild": "npm run build"
   },
->>>>>>> a227517f6dd7a80cb9c50008836e0cfdb26dd194
   "dependencies": {
     "@material-ui/core": "^4.4.0",
     "@material-ui/icons": "^4.2.1",
@@ -23,28 +20,12 @@
     "body-parser": "^1.19.0",
     "concurrently": "^4.1.2",
     "express": "^4.17.1",
-    "firebase": "^6.6.0",
-<<<<<<< HEAD
-=======
     "if-env": "^1.0.4",
->>>>>>> a227517f6dd7a80cb9c50008836e0cfdb26dd194
     "mysql2": "^1.7.0",
     "path": "^0.12.7",
-    "react": "^16.9.0",
-    "react-dom": "^16.9.0",
-    "react-router-dom": "^5.0.1",
-    "react-scripts": "^3.1.1",
-    "react-with-firebase-auth": "^1.0.4",
     "sequelize": "^5.18.1"
   },
   "devDependencies": {},
-<<<<<<< HEAD
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
-  },
-=======
->>>>>>> a227517f6dd7a80cb9c50008836e0cfdb26dd194
   "repository": {
     "type": "git",
     "url": "git+https://github.com/abrahanrodri/devsrusredux.git"
