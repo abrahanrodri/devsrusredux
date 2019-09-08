@@ -7,26 +7,51 @@ import NoMatch from "./Pages/NoMatch";
 import Login from "./Pages/Login";
 import CreateEvent from "./Pages/CreateEvent";
 import Comments from "./Pages/Comments";
+import API from './utils/API';
 
 class App extends Component {
   state = {
-    User: false
+    User: false,
+    Events: false
+  };
+
+  componentWillMount() {
+    API.getAllEvents().then(response => {
+      this.setState({ Events: response.data });
+    });
   }
-  handleLogin = (val) => {
-    this.setState({ User: val })
-  }
+
+  handleLogin = val => {
+    this.setState({ User: val });
+  };
+  
   render() {
     return (
       <div>
         <Router>
           <div>
-            <Navbar />
+            <Navbar User={this.state.User} />
             <Wrapper>
               <Switch>
-                {<Route exact path="/" component={Login} /> }
-                <Route exact path="/login" component={Login} render={()=><Login User={this.state.User} handleLogin={this.handleLogin} />} />
-                <Route exact path="/home" component={HomePage} />
-                {<Route exact path="/create" render={()=><CreateEvent  User={this.state.User} />} /> }
+                {<Route exact path="/" component={Login} />}
+                <Route
+                  exact
+                  path="/login"
+                  render={() => (
+                    <Login
+                      User={this.state.User}
+                      handleLogin={this.handleLogin}
+                    />
+                  )}
+                />
+                <Route exact path="/home" render={()=><HomePage Events={this.state.Events} />} />
+                {
+                  <Route
+                    exact
+                    path="/create"
+                    render={() => <CreateEvent User={this.state.User} />}
+                  />
+                }
                 <Route exact path="/comments" component={Comments} />
                 <Route component={NoMatch} />
               </Switch>
@@ -40,6 +65,5 @@ class App extends Component {
     );
   }
 }
-
 
 export default App;
