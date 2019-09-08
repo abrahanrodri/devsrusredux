@@ -30,10 +30,10 @@ class NavTabs extends React.Component {
        <div className={classes.root}>
         <AppBar position="static">
           <Tabs value={this.state.value} onChange={this.handleChange} aria-label="simple tabs example">
+          <Tab label="Login" component={Link} to="/login"/>
             <Tab label="Home" component={Link} to="/home"/>
             <Tab label="Create Event" component={Link} to="/create"/>
             <Tab label="Comments" component={Link} to="/comments"/>
-            <Tab label="Login" component={Link} to="/login"/>
           </Tabs>
         </AppBar>
       </div>

@@ -23,9 +23,9 @@ class App extends Component {
             <Navbar />
             <Wrapper>
               <Switch>
-                {<Route exact path="/" component={HomePage} /> }
-                <Route exact path="/home" component={HomePage} />
+                {<Route exact path="/" component={Login} /> }
                 <Route exact path="/login" component={Login} render={()=><Login User={this.state.User} handleLogin={this.handleLogin} />} />
+                <Route exact path="/home" component={HomePage} />
                 {<Route exact path="/create" render={()=><CreateEvent  User={this.state.User} />} /> }
                 <Route exact path="/comments" component={Comments} />
                 <Route component={NoMatch} />
