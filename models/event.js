@@ -15,9 +15,9 @@ module.exports = (sequelize, DataTypes) => {
       },
     }
   );
-  event.associate = function(models) {
-    // event has many networking events
-    event.hasMany(models.networking);
-  };
+  // event.associate = function(models) {
+  //   // event has many networking events
+  //   event.hasOne(models.user);
+  // };
   return event;
 };

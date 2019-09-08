@@ -4,6 +4,7 @@ import { Grid, Paper, TextField } from "@material-ui/core";
 import "./css/CreateEvent.css";
 import Button from "@material-ui/core/Button";
 import EventHolder from "../components/EventHolder/EventHolder";
+import API from '../utils/API';
 
 
 const styles = theme => ({
@@ -21,14 +22,22 @@ const styles = theme => ({
 
 class CreateEvent extends React.Component {
   state = {
-    Item: ""
+    name: "",
+    location: "",
+    description: ""
   };
 
   handleChange = event => {
-    console.log(event.target.name, event.target.value);
     const { name, value } = event.target;
     this.setState({ [name]: value });
   };
+
+  submitEvent = () => {
+    console.log(this.state);
+    API.postEvent(this.state)
+      .then(dbData => console.log(dbData))
+      .catch(err => console.log(err))
+  }
 
   render() {
     const { classes } = this.props;
@@ -41,6 +50,9 @@ class CreateEvent extends React.Component {
               <TextField
                 id="outlined-name"
                 label="Name"
+                name="name"
+                value={this.state.name}
+                onChange={this.handleChange}
                 className={classes.textField}
                 margin="normal"
                 variant="outlined"
@@ -48,6 +60,9 @@ class CreateEvent extends React.Component {
               <TextField
                 id="outlined-location"
                 label="Location"
+                name="location"
+                value={this.state.location}
+                onChange={this.handleChange}
                 multiline
                 className={classes.textField}
                 margin="normal"
@@ -59,9 +74,11 @@ class CreateEvent extends React.Component {
               <TextField
                 id="outlined-multiline-static"
                 label="Event Details"
+                name="description"
+                value={this.state.description}
+                onChange={this.handleChange}
                 multiline
                 rows="6"
-                defaultValue=""
                 className={classes.textField}
                 margin="normal"
                 variant="outlined"
@@ -72,6 +89,7 @@ class CreateEvent extends React.Component {
             color="primary"
             className={classes.button}
             disabled={!this.props.User && true}
+            onClick={this.submitEvent}
           >
 
             Create Event
