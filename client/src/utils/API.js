@@ -20,7 +20,7 @@ export default {
   },
   deleteEvent: async function(id) {
     try {
-        const response = await axios.get("/api/events/delete/"+ id)
+        const response = await axios.delete("/api/events/delete/"+ id)
         return response;
     } catch (error) {
         return error

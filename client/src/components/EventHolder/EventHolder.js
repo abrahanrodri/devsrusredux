@@ -28,15 +28,16 @@ class EventHolder extends React.Component {
   };
 
   deleteEvent = id => {
-    console.log(id)
+    console.log(id);
     API.deleteEvent(id)
-      .then(function (dbData) {
-        console.log(dbData)
+      .then(dbData => {
+        console.log(dbData.data);
+        this.props.updateGlobalState("Events", dbData.data);
       })
-      .catch(function (error) {
-        console.log(error)
-      })
-  }
+      .catch(function(error) {
+        console.log(error);
+      });
+  };
 
   render() {
     const { classes, Events } = this.props;
@@ -45,7 +46,12 @@ class EventHolder extends React.Component {
         <h1>Your Events</h1>
         {Events &&
           Events.map((event, i) => (
-            <Event event={event} deleteEvent={this.deleteEvent} classes={classes} key={i + "-event"} />
+            <Event
+              event={event}
+              deleteEvent={this.deleteEvent}
+              classes={classes}
+              key={i + "-event"}
+            />
           ))}
       </>
     );

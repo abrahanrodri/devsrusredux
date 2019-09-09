@@ -12,6 +12,7 @@ class Login extends React.Component {
   state = {
     LoggedInUser: false
   };
+
   /* INITIAL RENDER === this.props
 FIREBASE PROPS
 -user === null <Promise pending>
@@ -30,33 +31,29 @@ nextProps.user === google user information {
 YOUR PROPS
  nextProps.User (this.props.LoggedIn) === false
 */
+
   componentWillReceiveProps(nextProps) {
     if (
       nextProps.user &&
-      nextProps.user.displayName !== this.props.User.displayName
+      nextProps.user.displayName !== this.props.User.name
     ) {
-      this.props.updateGlobalState("User", {
-        email: nextProps.user.email,
-        displayName: nextProps.user.displayName,
-        uid: nextProps.user.uid
-      });
       this.postUserAPI({
         email: nextProps.user.email,
         displayName: nextProps.user.displayName,
         uid: nextProps.user.uid
-      })
+      });
     }
   }
 
   postUserAPI = user => {
     API.postUserByUID(user)
-      .then(function(dbData){
-        console.log(dbData)
+      .then(dbData => {
+        this.props.updateGlobalState("User", dbData.data);
       })
-      .catch(function(err){
-        console.log(err)
-      })
-  }
+      .catch(err => {
+        console.log(err);
+      });
+  };
 
   render() {
     /* 

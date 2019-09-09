@@ -34,7 +34,7 @@ class NavTabs extends React.Component {
             <Tab label="Home" component={Link} to="/home"/>
             <Tab label="Create Event" component={Link} to="/create"/>
             <Tab label="Comments" component={Link} to="/comments"/>
-            <Tab label={this.props.User && this.props.User.displayName} />
+            <Tab label={this.props.User && this.props.User.name} />
           </Tabs>
         </AppBar>
       </div>
