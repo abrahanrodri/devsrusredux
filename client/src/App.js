@@ -17,12 +17,7 @@ class App extends Component {
 
   componentWillMount() {
     API.getAllEvents().then(response => {
-      
-      console.log(response.data);
-      this.setState({ User: response.data[0].name, Events: [response.data[0].name, response.data[0].location] });
-
-      console.log(this.state);
-
+      this.setState({ Events: response.data });
     });
   }
 
