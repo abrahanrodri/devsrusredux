@@ -4,8 +4,7 @@ import { Grid, Paper, TextField } from "@material-ui/core";
 import "./css/CreateEvent.css";
 import Button from "@material-ui/core/Button";
 import EventHolder from "../components/EventHolder/EventHolder";
-import API from '../utils/API';
-
+import API from "../utils/API";
 
 const styles = theme => ({
   paper: {
@@ -33,14 +32,18 @@ class CreateEvent extends React.Component {
   };
 
   submitEvent = () => {
-    console.log(this.state);
     API.postEvent(this.state)
-      .then(dbData => console.log(dbData))
-      .catch(err => console.log(err))
-  }
+      .then(dbData => {
+        const newArr = this.props.Events;
+        newArr.push(dbData.data);
+        this.props.updateGlobalState("Events", newArr)
+      })
+      .catch(err => console.log(err));
+  };
 
   render() {
-    const { classes } = this.props;
+    const { classes, Events } = this.props;
+    console.log(Events)
     return (
       <div className={classes.root}>
         <Paper className={classes.paper}>
@@ -91,13 +94,10 @@ class CreateEvent extends React.Component {
             disabled={!this.props.User && true}
             onClick={this.submitEvent}
           >
-
             Create Event
-            
           </Button>
-          
         </Paper>
-        <EventHolder></EventHolder>
+        <EventHolder Events={Events} />
       </div>
     );
   }

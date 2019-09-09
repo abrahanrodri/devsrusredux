@@ -7,7 +7,7 @@ import NoMatch from "./Pages/NoMatch";
 import Login from "./Pages/Login";
 import CreateEvent from "./Pages/CreateEvent";
 import Comments from "./Pages/Comments";
-import API from './utils/API';
+import API from "./utils/API";
 
 class App extends Component {
   state = {
@@ -17,14 +17,15 @@ class App extends Component {
 
   componentWillMount() {
     API.getAllEvents().then(response => {
+      console.log(response.data);
       this.setState({ Events: response.data });
     });
   }
 
-  handleLogin = val => {
-    this.setState({ User: val });
+  updateGlobalState = (name, val) => {
+    this.setState({ [name]: val });
   };
-  
+
   render() {
     return (
       <div>
@@ -40,16 +41,26 @@ class App extends Component {
                   render={() => (
                     <Login
                       User={this.state.User}
-                      handleLogin={this.handleLogin}
+                      updateGlobalState={this.updateGlobalState}
                     />
                   )}
                 />
-                <Route exact path="/home" render={()=><HomePage Events={this.state.Events} />} />
+                <Route
+                  exact
+                  path="/home"
+                  render={() => <HomePage Events={this.state.Events} />}
+                />
                 {
                   <Route
                     exact
                     path="/create"
-                    render={() => <CreateEvent User={this.state.User} />}
+                    render={() => (
+                      <CreateEvent
+                        User={this.state.User}
+                        Events={this.state.Events}
+                        updateGlobalState={this.updateGlobalState}
+                      />
+                    )}
                   />
                 }
                 <Route exact path="/comments" component={Comments} />
