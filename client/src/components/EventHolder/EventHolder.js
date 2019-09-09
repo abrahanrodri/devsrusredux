@@ -1,16 +1,14 @@
 import React from "react";
 import { withStyles } from "@material-ui/core/styles";
-import { Grid, Paper } from "@material-ui/core";
+import { Grid } from "@material-ui/core";
 import "./EventHolder.css";
 import Button from "@material-ui/core/Button";
 import API from "../../utils/API";
 
 const styles = theme => ({
   paper: {
-    margin: "5%",
     textAlign: "center",
-    height: "500px",
-    width: "500px",
+    width: "100%",
     backgroundColor: "rgba(168, 166, 166, 0.65)"
   },
   textField: {
@@ -32,31 +30,24 @@ class EventHolder extends React.Component {
   deleteEvent = id => {
     console.log(id)
     API.deleteEvent(id)
-    .then(function(dbData){
-      console.log(dbData)
-    })
-    .catch(function(error){
-      console.log(error)
-    })
+      .then(function (dbData) {
+        console.log(dbData)
+      })
+      .catch(function (error) {
+        console.log(error)
+      })
   }
 
   render() {
     const { classes, Events } = this.props;
     return (
-      <div className={classes.root}>
-        <Paper className={classes.paper}>
-          <Grid container>
-            <Grid item lg={12} md={6} color="white">
-              <h1>Your Events</h1>
-              {Events &&
-                Events.map((event, i) => (
-                  <Event event={event} deleteEvent={this.deleteEvent} classes={classes} key={i + "-event"} />
-                ))}
-            </Grid>
-            <Grid item sm={12}></Grid>
-          </Grid>
-        </Paper>
-      </div>
+      <>
+        <h1>Your Events</h1>
+        {Events &&
+          Events.map((event, i) => (
+            <Event event={event} deleteEvent={this.deleteEvent} classes={classes} key={i + "-event"} />
+          ))}
+      </>
     );
   }
 }

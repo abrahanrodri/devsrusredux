@@ -25,5 +25,13 @@ export default {
     } catch (error) {
         return error
     }
+  },
+  postUserByUID: async function(user){
+    try {
+      const response = await axios.post("/api/users/loginOrRegister", user);
+      return response;
+    } catch (error) {
+      return error
+    }
   }
 };

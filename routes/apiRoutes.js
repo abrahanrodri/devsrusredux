@@ -36,4 +36,25 @@ router.delete("/events/:id", (req, res) => {
 
 })
 
+router.post("/users/loginOrRegister", async (req, res) => {
+  console.log(req.body)
+  try {
+    const response = await db.user.findAll({ where: {
+      uid: req.body.uid
+    }})
+    if (response.length){
+      return res.status(200).send(response)
+    }
+    
+    const newUser = await db.user.create({
+      ...req.body,
+      name: req.body.displayName
+    });
+    return res.status(200).send(newUser)
+    
+  } catch (error) {
+    res.status(404).send(error)
+  }
+})
+
 module.exports = router;
