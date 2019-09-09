@@ -19,42 +19,37 @@ router.post("/eventpage", async (req, res) => {
   }
 });
 
-router.delete("/events/:id", (req, res) => {
+router.delete("/events/delete/:id", async (req, res) => {
   try {
-    const response =  db.event.destoy({ 
-      where: {
-       id: req.params.id 
-      }
-      }).then(function(del) {
-        res.json(del);
-      });
-    return res.status(200).send(response)
-  } catch (error) {
-    console.log("ERROR IN DESTROY")
-    res.status(404).send(error)
-  }
+    const response = await db.event.destroy({ where: { id: req.params.id } });
 
-})
+    if (response) {
+      const newArr = await db.event.findAll();
+      return res.status(200).json(newArr);
+    }
+
+    throw "NO EVENT FOUND";
+  } catch (error) {
+    console.log(error.message);
+    res.status(404).send(error);
+  }
+});
 
 router.post("/users/loginOrRegister", async (req, res) => {
-  console.log(req.body)
   try {
-    const response = await db.user.findAll({ where: {
-      uid: req.body.uid
-    }})
-    if (response.length){
-      return res.status(200).send(response)
+    const response = await db.user.findOne({ uid: req.body.uid });
+    if (response) {
+      return res.status(200).send(response);
     }
-    
+
     const newUser = await db.user.create({
       ...req.body,
       name: req.body.displayName
     });
-    return res.status(200).send(newUser)
-    
+    return res.status(200).send(newUser);
   } catch (error) {
-    res.status(404).send(error)
+    res.status(404).send(error);
   }
-})
+});
 
 module.exports = router;

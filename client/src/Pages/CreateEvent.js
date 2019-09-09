@@ -36,24 +36,25 @@ class CreateEvent extends React.Component {
       .then(dbData => {
         const newArr = this.props.Events;
         newArr.push(dbData.data);
-        this.props.updateGlobalState("Events", newArr)
+        this.props.updateGlobalState("Events", newArr);
+        this.setState({
+          name: "",
+          location: "",
+          description: ""
+        });
       })
       .catch(err => console.log(err));
   };
 
   render() {
-    const { classes, Events } = this.props;
+    const { classes, Events, updateGlobalState } = this.props;
     return (
       <div className={classes.root}>
-
         <Grid container spacing={2}>
-
           <Grid item xs={12} sm={6} color="white">
-
             <Box m={2}>
               <Paper className={classes.paper}>
                 <Box p={2}>
-
                   <h1>Create Event {this.props.User.displayName}</h1>
 
                   <TextField
@@ -66,6 +67,7 @@ class CreateEvent extends React.Component {
                     className={classes.textField}
                     margin="normal"
                     variant="outlined"
+                    disabled={!this.props.User && true}
                   />
                   <TextField
                     fullWidth
@@ -78,6 +80,7 @@ class CreateEvent extends React.Component {
                     className={classes.textField}
                     margin="normal"
                     variant="outlined"
+                    disabled={!this.props.User && true}
                   />
                   <TextField
                     fullWidth
@@ -91,6 +94,7 @@ class CreateEvent extends React.Component {
                     className={classes.textField}
                     margin="normal"
                     variant="outlined"
+                    disabled={!this.props.User && true}
                   />
                   <Button
                     fullWidth
@@ -100,7 +104,7 @@ class CreateEvent extends React.Component {
                     onClick={this.submitEvent}
                   >
                     Create Event
-              </Button>
+                  </Button>
                 </Box>
               </Paper>
             </Box>
@@ -110,14 +114,15 @@ class CreateEvent extends React.Component {
             <Box m={2}>
               <Paper className={classes.paper}>
                 <Box p={2}>
-                  <EventHolder Events={Events} />
+                  <EventHolder
+                    Events={Events}
+                    updateGlobalState={updateGlobalState}
+                  />
                 </Box>
               </Paper>
             </Box>
           </Grid>
-
         </Grid>
-
       </div>
     );
   }

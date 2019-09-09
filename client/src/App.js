@@ -34,7 +34,7 @@ class App extends Component {
             <Navbar User={this.state.User} />
             <Wrapper>
               <Switch>
-                {/* {<Route exact path="/" component={Login} />}
+                {<Route exact path="/" component={Login} />}
                 <Route
                   exact
                   path="/login"
@@ -44,7 +44,7 @@ class App extends Component {
                       updateGlobalState={this.updateGlobalState}
                     />
                   )}
-                /> */}
+                />
                 <Route
                   exact
                   path="/home"
