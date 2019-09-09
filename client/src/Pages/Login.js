@@ -8,34 +8,58 @@ import logo from "../logo.svg";
 const firebaseApp = firebase.initializeApp(firebaseConfig);
 
 class Login extends React.Component {
-    state = {
-        LoggedInUser: false
-    }
+  state = {
+    LoggedInUser: false
+  };
+  /* INITIAL RENDER === this.props
+FIREBASE PROPS
+-user === null <Promise pending>
 
+YOUR PROPS
+ this.props.User (this.props.LoggedIn) === false
+*/
+
+  /* FIREBASE RESOLVES PROMISE === nextProps
+FIREBASE PROPS
+nextProps.user === google user information {
+  displayName: "Some Name"
+}
+
+
+YOUR PROPS
+ nextProps.User (this.props.LoggedIn) === false
+*/
   componentWillReceiveProps(nextProps) {
-    if(nextProps.user && nextProps.user.displayName !== this.props.User.displayName){
-        this.props.handleLogin({
-            email: nextProps.user.email,
-            displayName: nextProps.user.displayName,
-            uid: nextProps.user.uid
-        })
+    if (
+      nextProps.user &&
+      nextProps.user.displayName !== this.props.User.displayName
+    ) {
+      this.props.updateGlobalState("User", {
+        email: nextProps.user.email,
+        displayName: nextProps.user.displayName,
+        uid: nextProps.user.uid
+      });
     }
   }
-  
+
   render() {
-    const { 
-      user, 
-      User: LoggedIn, 
-      signOut, 
-      signInWithGoogle 
-    } = this.props;
+    /* 
+    FIREBASE PROPS
+    - user
+    -signOut
+    -signInWithGoogle
+
+    YOUR PROPS
+    -User aliased to LoggedIn
+    */
+    const { user, User: LoggedIn, signOut, signInWithGoogle } = this.props;
 
     return (
       <>
         <div className="App">
           <header className="App-header">
             <img src={logo} className="App-logo" alt="logo" />
-            { LoggedIn && LoggedIn.uid }
+            {LoggedIn && LoggedIn.uid}
             {user ? <p>Hello, {user.displayName}</p> : <p>Please sign in.</p>}
             {user ? (
               <button onClick={signOut}>Sign out</button>
