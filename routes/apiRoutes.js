@@ -19,15 +19,21 @@ router.post("/eventpage", async (req, res) => {
   }
 });
 
-router.get("/events/delete/:id", async (req, res) => {
+router.delete("/events/:id", (req, res) => {
   try {
-    // this doesnt work testing
-    const response = await db.event.destoy({ where: { id: req.params.id }})
+    const response =  db.event.destoy({ 
+      where: {
+       id: req.params.id 
+      }
+      }).then(function(del) {
+        res.json(del);
+      });
     return res.status(200).send(response)
   } catch (error) {
     console.log("ERROR IN DESTROY")
     res.status(404).send(error)
   }
+
 })
 
 module.exports = router;

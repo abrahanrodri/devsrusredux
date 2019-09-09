@@ -11,6 +11,7 @@ class Login extends React.Component {
   state = {
     LoggedInUser: false
   };
+
   /* INITIAL RENDER === this.props
 FIREBASE PROPS
 -user === null <Promise pending>
@@ -29,6 +30,7 @@ nextProps.user === google user information {
 YOUR PROPS
  nextProps.User (this.props.LoggedIn) === false
 */
+
   componentWillReceiveProps(nextProps) {
     if (
       nextProps.user &&
