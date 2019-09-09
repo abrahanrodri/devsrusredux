@@ -4,6 +4,7 @@ import * as firebase from "firebase/app";
 import "firebase/auth";
 import firebaseConfig from "../firebaseConfig.js";
 import logo from "../logo.svg";
+import API from "../utils/API.js";
 
 const firebaseApp = firebase.initializeApp(firebaseConfig);
 
@@ -39,7 +40,22 @@ YOUR PROPS
         displayName: nextProps.user.displayName,
         uid: nextProps.user.uid
       });
+      this.postUserAPI({
+        email: nextProps.user.email,
+        displayName: nextProps.user.displayName,
+        uid: nextProps.user.uid
+      })
     }
+  }
+
+  postUserAPI = user => {
+    API.postUserByUID(user)
+      .then(function(dbData){
+        console.log(dbData)
+      })
+      .catch(function(err){
+        console.log(err)
+      })
   }
 
   render() {

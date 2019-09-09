@@ -1,17 +1,17 @@
 import React from "react";
 import { withStyles } from "@material-ui/core/styles";
-import { Grid, Paper, TextField } from "@material-ui/core";
+import { Grid, Paper, TextField, Button, Box } from "@material-ui/core";
 import "./css/CreateEvent.css";
-import Button from "@material-ui/core/Button";
 import EventHolder from "../components/EventHolder/EventHolder";
 import API from "../utils/API";
 
 const styles = theme => ({
   paper: {
-    margin: "5%",
-    textAlign: "center",
-    height: "400px",
-    width: "500px",
+    // margin: "5%",
+    // textAlign: "center",
+    // height: "400px",
+    // width: "500px",
+    width: "100%",
     backgroundColor: "rgba(168, 166, 166, 0.65)"
   },
   textField: {
@@ -43,61 +43,81 @@ class CreateEvent extends React.Component {
 
   render() {
     const { classes, Events } = this.props;
-    console.log(Events)
     return (
       <div className={classes.root}>
-        <Paper className={classes.paper}>
-          <Grid container>
-            <Grid item lg={12} md={6} color="white">
-              <h1>Create Event {this.props.User.displayName}</h1>
-              <TextField
-                id="outlined-name"
-                label="Name"
-                name="name"
-                value={this.state.name}
-                onChange={this.handleChange}
-                className={classes.textField}
-                margin="normal"
-                variant="outlined"
-              />
-              <TextField
-                id="outlined-location"
-                label="Location"
-                name="location"
-                value={this.state.location}
-                onChange={this.handleChange}
-                multiline
-                className={classes.textField}
-                margin="normal"
-                variant="outlined"
-              />
-            </Grid>
 
-            <Grid item sm={12}>
-              <TextField
-                id="outlined-multiline-static"
-                label="Event Details"
-                name="description"
-                value={this.state.description}
-                onChange={this.handleChange}
-                multiline
-                rows="6"
-                className={classes.textField}
-                margin="normal"
-                variant="outlined"
-              />
-            </Grid>
+        <Grid container spacing={2}>
+
+          <Grid item xs={12} sm={6} color="white">
+
+            <Box m={2}>
+              <Paper className={classes.paper}>
+                <Box p={2}>
+
+                  <h1>Create Event {this.props.User.displayName}</h1>
+
+                  <TextField
+                    fullWidth
+                    id="outlined-name"
+                    label="Name"
+                    name="name"
+                    value={this.state.name}
+                    onChange={this.handleChange}
+                    className={classes.textField}
+                    margin="normal"
+                    variant="outlined"
+                  />
+                  <TextField
+                    fullWidth
+                    id="outlined-location"
+                    label="Location"
+                    name="location"
+                    value={this.state.location}
+                    onChange={this.handleChange}
+                    multiline
+                    className={classes.textField}
+                    margin="normal"
+                    variant="outlined"
+                  />
+                  <TextField
+                    fullWidth
+                    id="outlined-multiline-static"
+                    label="Event Details"
+                    name="description"
+                    value={this.state.description}
+                    onChange={this.handleChange}
+                    multiline
+                    rows="6"
+                    className={classes.textField}
+                    margin="normal"
+                    variant="outlined"
+                  />
+                  <Button
+                    fullWidth
+                    color="primary"
+                    className={classes.button}
+                    disabled={!this.props.User && true}
+                    onClick={this.submitEvent}
+                  >
+                    Create Event
+              </Button>
+                </Box>
+              </Paper>
+            </Box>
           </Grid>
-          <Button
-            color="primary"
-            className={classes.button}
-            disabled={!this.props.User && true}
-            onClick={this.submitEvent}
-          >
-            Create Event
-          </Button>
-        </Paper>
-        <EventHolder Events={Events} />
+
+          <Grid item xs={12} sm={6}>
+            <Box m={2}>
+              <Paper className={classes.paper}>
+                <Box p={2}>
+                  <EventHolder Events={Events} />
+                </Box>
+              </Paper>
+            </Box>
+          </Grid>
+
+        </Grid>
+
       </div>
     );
   }
