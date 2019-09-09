@@ -9,7 +9,27 @@ router.get("/events", async (req, res) => {
     res.send("error");
   }
 });
+router.post("/events/update", async (req, res)=> {
+  try {
+    const response = await db.event.update({
+      name: req.body.name,
+      location: req.body.location,
+      description: req.body.description
+    }, {
+      where: {
+        id: req.body.id
+      }
+    })
 
+    if(response){
+      const updateRow = await db.event.findAll()
+      return res.status(200).send(updateRow)
+    }
+    throw "None updated";
+  } catch (error) {
+    res.status(400).send(error)
+  }
+})
 router.post("/eventpage", async (req, res) => {
   try {
     const response = await db.event.create(req.body);

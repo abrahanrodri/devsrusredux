@@ -1,4 +1,5 @@
 import React from "react";
+import { Redirect } from 'react-router-dom';
 import withFirebaseAuth from "react-with-firebase-auth";
 import * as firebase from "firebase/app";
 import "firebase/auth";
@@ -9,9 +10,6 @@ import API from "../utils/API.js";
 const firebaseApp = firebase.initializeApp(firebaseConfig);
 
 class Login extends React.Component {
-  state = {
-    LoggedInUser: false
-  };
 
   /* INITIAL RENDER === this.props
 FIREBASE PROPS
@@ -34,7 +32,7 @@ YOUR PROPS
 
 //this only works after a pull when you comment out this section
   componentWillReceiveProps(nextProps) {
-    if (nextProps.user && nextProps.user.displayName !== this.props.User) {
+    if (nextProps.user && nextProps.user.displayName !== this.props.User.name) {
       this.postUserAPI({
         email: nextProps.user.email,
         displayName: nextProps.user.displayName,
@@ -53,6 +51,12 @@ YOUR PROPS
       });
   };
 
+  globalSignOut = () => {
+    console.log("Here")
+    this.props.signOut()
+    this.props.updateGlobalState("User", false);
+  }
+
   render() {
     /* 
     FIREBASE PROPS
@@ -67,13 +71,14 @@ YOUR PROPS
 
     return (
       <>
+      {/* { LoggedIn && <Redirect to="/create" />} */}
         <div className="App">
           <header className="App-header">
             <img src={logo} className="App-logo" alt="logo" />
             {LoggedIn && LoggedIn.uid}
             {user ? <p>Hello, {user.displayName}</p> : <p>Please sign in.</p>}
             {user ? (
-              <button onClick={signOut}>Sign out</button>
+              <button onClick={this.globalSignOut}>Sign out</button>
             ) : (
               <button onClick={signInWithGoogle}>Sign in with Google</button>
             )}

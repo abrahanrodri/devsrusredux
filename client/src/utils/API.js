@@ -9,6 +9,14 @@ export default {
       return err;
     }
   },
+  updateEvent: async function(data){
+    try {
+      const response = await axios.post("/api/events/update", data);
+      return response;
+    } catch (error) {
+      return error;
+    }
+  },
   getAllEvents: async function() {
     console.log("API folder");
     try {
