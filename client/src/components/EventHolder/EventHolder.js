@@ -40,7 +40,7 @@ class EventHolder extends React.Component {
   };
 
   render() {
-    const { classes, Events } = this.props;
+    const { classes, Events, selectEvent } = this.props;
     return (
       <>
         <h1>Your Events</h1>
@@ -48,6 +48,7 @@ class EventHolder extends React.Component {
           Events.map((event, i) => (
             <Event
               event={event}
+              selectEvent={selectEvent}
               deleteEvent={this.deleteEvent}
               classes={classes}
               key={i + "-event"}
@@ -59,7 +60,7 @@ class EventHolder extends React.Component {
 }
 export default withStyles(styles)(EventHolder);
 
-const Event = ({ event, deleteEvent, classes }) => {
+const Event = ({ event, deleteEvent, classes, selectEvent }) => {
   return (
     <div>
       <h5>{event.name}</h5>
@@ -74,7 +75,11 @@ const Event = ({ event, deleteEvent, classes }) => {
         Delete Event
       </Button>
 
-      <Button color="primary" className={classes.button}>
+      <Button
+        onClick={() => selectEvent(event)}
+        color="primary"
+        className={classes.button}
+      >
         Edit Event
       </Button>
     </div>

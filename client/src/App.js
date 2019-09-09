@@ -11,7 +11,7 @@ import API from "./utils/API";
 
 class App extends Component {
   state = {
-    User: "",
+    User: false,
     Events: []
   };
 
@@ -22,6 +22,7 @@ class App extends Component {
   }
 
   updateGlobalState = (name, val) => {
+    console.log("Global Update")
     this.setState({ [name]: val });
   };
 
