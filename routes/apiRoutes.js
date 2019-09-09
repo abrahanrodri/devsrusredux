@@ -21,6 +21,7 @@ router.post("/eventpage", async (req, res) => {
 
 router.get("/events/delete/:id", async (req, res) => {
   try {
+    // this doesnt work
     const response = await db.event.destoy({ where: { id: req.params.id }})
     return res.status(200).send(response)
   } catch (error) {
